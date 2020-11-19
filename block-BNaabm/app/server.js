@@ -8,7 +8,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (_, res) => {
-  res.end("This is the home page");
+  res.send("This is the home page");
 });
 
 app.listen(4000, () => {
