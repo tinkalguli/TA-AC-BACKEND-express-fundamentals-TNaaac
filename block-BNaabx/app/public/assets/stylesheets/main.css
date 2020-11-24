@@ -1,0 +1,31 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 50rem;
+    margin: 4rem auto;
+    background: #cacaca;
+    border-radius: 20px 20px 0 0;
+}
+
+h1 {
+    background: #333;
+    color: #eee;
+    padding: 1rem 0;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+}
+
+img {
+    width: 100%;
+}
+
+p {
+    padding: 1rem;
+}
+
