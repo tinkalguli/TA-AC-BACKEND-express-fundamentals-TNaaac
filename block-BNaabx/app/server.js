@@ -24,40 +24,16 @@ function json(req, res, next) {
     next();
 }
 
-// function static(req, res, next) {
-//     if(req.url.split('.').pop() === 'css') {
-//         res.setHeader('Content-Type', 'text/css');
-//         fs.readFile("/public" + req.url, (err, content) => {
-//             if(err) return console.log(err);
-//             res.end(content);
-//         });
-//     }
-
-//     if(req.url.split('.').pop() === 'js') {
-//         res.setHeader('Content-Type', 'text/js');
-//         fs.readFile("./public" + req.url, (err, content) => {
-//             if(err) return console.log(err);
-//             res.end(content);
-//         })
-//     }
-
-//     if(["jpeg", "jpg", "svg", "png"].includes(req.url.split('.').pop())) {
-//         if (req.url.split('.').pop() == "svg") {
-//             res.setHeader('Content-Type', 'image/' + req.url.split('.').pop() + "+xml");
-//         }  else res.setHeader('Content-Type', 'image/' + req.url.split('.').pop());
-//         fs.readFile("./public" + req.url, (err, content) => {
-//             if(err) return console.log(err);
-//             res.end(content);
-//         });
-//     }
-//     next();
-// }
+function static(req, res, next) {
+    fs.readFile(__dirname + "/public" + req.url, (err, content) => {
+        if(err) return next();
+        res.sendFile(__dirname + "/public" + req.url);
+    });
+}
 
 app.use(logger);
 app.use(json);
-// app.use(static);
-
-app.use(express.static(__dirname + "/public"));
+app.use(static);
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
